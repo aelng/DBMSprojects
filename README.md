@@ -13,10 +13,10 @@ List of commands for non relational to relational:
 
 INPUT:
 
-TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) 
-TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) 
-FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) 
-NRP EMPLOYEE 
+- TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) 
+- TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) 
+- FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) 
+- NRP EMPLOYEE 
 
 In order:
 - Creates the table EMPLOYEE
@@ -31,12 +31,12 @@ The non-relational schema for this table is {Minit,Lname,Ssn,Bdate,Fname:{Dnumbe
 
 INPUT:
 
-NRTABLE {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
+- NRTABLE {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
 
 OUTPUT:
 Here is the relational schema 
-TABLE1{Minit,Lname,Ssn,Bdate,FK(Fname)}
-TABLE2{Dnumber,Mgr_ssn,Mgr_start_date,PK(Fname)}
+- TABLE1{Minit,Lname,Ssn,Bdate,FK(Fname)}
+- TABLE2{Dnumber,Mgr_ssn,Mgr_start_date,PK(Fname)}
 
 - Creates a relational schema with as much detail as possible with information provided
 
