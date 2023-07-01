@@ -12,6 +12,7 @@ List of commands for non relational to relational:
 # Example for relational to non relational:
 
 INPUT:
+
 TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) // Creates the table EMPLOYEE
 TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) // Creates the table DEPARTMENT
 FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) // Connects with a FK for EMPLOYEE from DEPARTMENT's PK
@@ -23,6 +24,7 @@ The non-relational schema for this table is {Minit,Lname,Ssn,Bdate,Fname:{Dnumbe
 # Example for non relational to relational:
 
 INPUT:
+
 NRTABLE {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
 
 OUTPUT:
