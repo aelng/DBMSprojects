@@ -13,10 +13,16 @@ List of commands for non relational to relational:
 
 INPUT:
 
-TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) // Creates the table EMPLOYEE
-TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) // Creates the table DEPARTMENT
-FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) // Connects with a FK for EMPLOYEE from DEPARTMENT's PK
-NRP EMPLOYEE // Prints out the table with FK
+TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) 
+TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) 
+FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) 
+NRP EMPLOYEE 
+
+In order:
+- Creates the table EMPLOYEE
+- Creates the table DEPARTMENT
+- Connects with a FK for EMPLOYEE from DEPARTMENT's PK
+- Prints out the table with FK
 
 OUTPUT:
 The non-relational schema for this table is {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
@@ -28,10 +34,10 @@ INPUT:
 NRTABLE {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
 
 OUTPUT:
-Here is the relational schema // Creates a relational schema with as much detail as possible with information provided
+Here is the relational schema 
 TABLE1{Minit,Lname,Ssn,Bdate,FK(Fname)}
 TABLE2{Dnumber,Mgr_ssn,Mgr_start_date,PK(Fname)}
 
-
+- Creates a relational schema with as much detail as possible with information provided
 
 NOTE: deviances of syntax from given examples will most likely have incorrect results, only changing names or data within format will work (extent of deviance would be something like creating four tables then creating a FK between two of them). Other than that please use the commands in order followed in the example code.
