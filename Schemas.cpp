@@ -11,8 +11,8 @@ signed main() {
     cin.sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    //freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
     map<string, int> pos;
     map<string, tuple<string,string,string>> FKp; // PK, referenced table, FK
     vector<vector<string>> tables;
@@ -20,7 +20,7 @@ signed main() {
         string command;
         cin >> command;
         if(command == "TABLE") {
-            string parse; cin >> parse;
+            string parse; cin >> parse; //cout << parse << endl;
             string tablename = ""; int ind = 0;
             for(int i = ind; i < parse.size(); i++) {
                 if (parse[i]=='(') {ind = i+1; break;}
@@ -31,7 +31,10 @@ signed main() {
             pos[tablename]=tables.size()-1;
             string attribute = "";
             for(int i = ind; i < parse.size(); i++) {
-                if(parse[i]==')') {tables[pos[tablename]].push_back(attribute); break;}
+                if(parse[i]==')'||i==parse.size()-1) {
+                    if(parse[i]!=')'){while(parse[parse.length()-1]!=';'){cin>>parse;}}
+                    if(attribute!="PRIMAR"){tables[pos[tablename]].push_back(attribute);} break;
+                }
                 if(parse[i]!=',') {attribute+=parse[i];}
                 else {tables[pos[tablename]].push_back(attribute); attribute = "";}
             }
@@ -61,7 +64,7 @@ signed main() {
                 else {cout << tt[i];} if(i<tt.size()-1){cout<<",";}
             } cout << "}" << endl;
         }
-        else if (command == "FOREIGN") {
+        else if (command == "FOREIGN") { string key; cin >> key;
             string parse; cin >> parse; int ind = 1;
             string FK = ""; string table = ""; string PK = ""; string rtable = "";
             for(int i = ind; i < parse.size(); i++) {
@@ -82,7 +85,20 @@ signed main() {
                 else {FK+=fparse[i];}
             }
             FKp[table]=make_tuple(PK,rtable,FK);
-        } else if (command == "NRP") {
+
+
+            cout << "The non-relational schema for this table is {";
+            if(FKp.count(table)) {
+                for(int i = 0; i < tables[pos[table]].size(); i++) {
+                    if(tables[pos[table]][i]!=get<0>(FKp[table])) {cout << tables[pos[table]][i] << ",";}
+                } cout << get<0>(FKp[table]) << ":{";
+                for(int i = 0; i < tables[pos[get<1>(FKp[table])]].size(); i++) {
+                    string cur = tables[pos[get<1>(FKp[table])]][i];
+                    if(cur!=get<2>(FKp[table])) {cout << cur; if(i!=tables[pos[get<1>(FKp[table])]].size()-1){cout << ',';}}
+                }
+                cout << "}}" << endl;
+            }
+        } else if (command == "NRP") { // THIS IS AN EXTRA COMMAND IF TABLE MUST BE REPRINTED
             cout << "The non-relational schema for this table is {";
             string table; cin >> table;
             if(FKp.count(table)) {
@@ -96,7 +112,7 @@ signed main() {
                 cout << "}}" << endl;
             }
         }
-        else {cout << "Invalid Syntax" << endl;}
+        else {break;}
     }
     return 0;
 }
