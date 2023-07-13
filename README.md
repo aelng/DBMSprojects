@@ -13,10 +13,9 @@ List of commands for non relational to relational:
 
 INPUT:
 
-- TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate) 
-- TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date) 
-- FOREIGN (EMPLOYEE(Fname) REFERENCES DEPARTMENT(Dname)) 
-- NRP EMPLOYEE 
+- TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate,Address,Sex,Salary,Super_ssn,Dno,PRIMARY KEY(Ssn));
+- TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date,PRIMARY KEY(Dnumber));
+- FOREIGN KEY (DEPARTMENT(Mgr_ssn) REFERENCES EMPLOYEE(Ssn));
 
 In order:
 - Creates the table EMPLOYEE
@@ -25,7 +24,7 @@ In order:
 - Prints out the table with FK
 
 OUTPUT:
-The non-relational schema for this table is {Minit,Lname,Ssn,Bdate,Fname:{Dnumber,Mgr_ssn,Mgr_start_date}}
+The non-relational schema for this table is {Dname,Dnumber,Mgr_start_date,Mgr_ssn:{Fname,Minit,Lname,Bdate,Address,Sex,Salary,Super_ssn,Dno}}
 
 # Example for non relational to relational:
 
