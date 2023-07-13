@@ -24,7 +24,8 @@ In order:
 - Prints out the table with FK
 
 OUTPUT (TO FILE NAMED "output.txt"):
-The non-relational schema for this table is {Dname,Dnumber,Mgr_start_date,Mgr_ssn:{Fname,Minit,Lname,Bdate,Address,Sex,Salary,Super_ssn,Dno}}
+
+- The non-relational schema for this table is {Dname,Dnumber,Mgr_start_date,Mgr_ssn:{Fname,Minit,Lname,Bdate,Address,Sex,Salary,Super_ssn,Dno}}
 
 # Example for non relational to relational:
 
