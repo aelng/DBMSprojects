@@ -11,7 +11,7 @@ List of commands for non relational to relational:
 
 # Example for relational to non relational:
 
-INPUT:
+INPUT (FROM FILE NAMED "input.txt"):
 
 - TABLE EMPLOYEE(Fname,Minit,Lname,Ssn,Bdate,Address,Sex,Salary,Super_ssn,Dno,PRIMARY KEY(Ssn));
 - TABLE DEPARTMENT(Dname,Dnumber,Mgr_ssn,Mgr_start_date,PRIMARY KEY(Dnumber));
@@ -23,7 +23,7 @@ In order:
 - Connects with a FK for EMPLOYEE from DEPARTMENT's PK
 - Prints out the table with FK
 
-OUTPUT:
+OUTPUT (TO FILE NAMED "output.txt"):
 The non-relational schema for this table is {Dname,Dnumber,Mgr_start_date,Mgr_ssn:{Fname,Minit,Lname,Bdate,Address,Sex,Salary,Super_ssn,Dno}}
 
 # Example for non relational to relational:
